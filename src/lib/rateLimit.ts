@@ -11,7 +11,6 @@ const RATE_LIMITS = {
 export async function checkRateLimit(userId: string, plan: keyof typeof RATE_LIMITS) {
   try {
     const key = `rate_limit:${userId}`
-    const month = new Date().getMonth()
     
     // Get current usage
     const usage = await redis.get(key)

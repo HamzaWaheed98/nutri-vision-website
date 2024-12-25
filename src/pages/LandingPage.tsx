@@ -1,6 +1,5 @@
 // src/components/LandingPage.tsx
 import React from 'react';
-import { Github, Mail, ExternalLink, Check } from 'lucide-react';
 import PricingCard from "@/components/pricing/PricingCard";
 
 const pricingTiers = [

@@ -3,12 +3,12 @@ import GithubProvider from 'next-auth/providers/github';
 import { sql } from '@vercel/postgres';
 import crypto from 'crypto';
 
-// Add type checking for environment variables
 if (!process.env.GITHUB_ID || !process.env.GITHUB_SECRET) {
   throw new Error('Missing GitHub OAuth credentials');
 }
 
-export const authOptions = {
+
+const handler = NextAuth({
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_ID as string,
@@ -16,7 +16,7 @@ export const authOptions = {
     }),
   ],
   callbacks: {
-    async signIn({ user, account }: { user: any; account: any }) {
+    async signIn({ user, account }) {
       if (account?.provider === 'github') {
         try {
           // Check if user exists
@@ -39,7 +39,7 @@ export const authOptions = {
       }
       return true;
     },
-    async session({ session, token }: { session: any; token: any }) {
+    async session({ session,  }) {
       if (session?.user?.email) {
         // Fetch user's API key
         const result = await sql`
@@ -52,7 +52,6 @@ export const authOptions = {
       return session;
     }
   }
-};
+});
 
-const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };
