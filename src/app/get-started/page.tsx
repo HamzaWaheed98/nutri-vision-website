@@ -11,7 +11,7 @@ const GetStarted = () => {
           <h2 className="text-3xl font-bold text-gray-900">Get Started with NutriVision</h2>
           <p className="mt-2 text-gray-600">Get your API key in less than a minute</p>
         </div>
-        
+           
         <div className="bg-white shadow rounded-lg">
           <div className="px-6 py-8">
             {/* GitHub Sign In */}
