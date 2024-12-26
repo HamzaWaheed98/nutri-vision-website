@@ -1,7 +1,12 @@
-import NutritionAPILanding from "../pages/LandingPage";
+import MainNavbar from "@/components/layout/MainNavbar";
+import LandingPage from "../pages/LandingPage";
+
 
 export default function Home() {
   return (
-   < NutritionAPILanding/>
+    <>
+   <MainNavbar />
+   <LandingPage/>
+   </>
   );
 }
